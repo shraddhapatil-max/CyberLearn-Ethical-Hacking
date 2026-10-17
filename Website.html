@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ethical Hacking Virtual Internship</title>
+
+    <style>
+        /* GENERAL STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 85px;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #080d19;
+            color: #f3f6fc;
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 84%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .accent {
+            color: #65e4db;
+        }
+
+        .section {
+            padding: 90px 8%;
+        }
+
+        .section-label {
+            color: #65e4db;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 18px;
+        }
+
+        h1, h2, h3 {
+            line-height: 1.25;
+        }
+
+        h2 {
+            font-size: clamp(30px, 4vw, 44px);
+        }
+
+        /* NAVIGATION */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(8, 13, 25, 0.96);
+            border-bottom: 1px solid #263247;
+        }
+
+        .navbar {
+            min-height: 75px;
+            padding: 15px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: #65e4db;
+        }
+
+        .logo-icon {
+            display: inline-grid;
+            place-items: center;
+            width: 36px;
+            height: 36px;
+            margin-right: 8px;
+            border-radius: 9px;
+            color: #080d19 !important;
+            background: linear-gradient(135deg, #5cbcff, #65e4db);
+            font-size: 13px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 13px;
+            color: #c1cbdb;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #65e4db;
+        }
+
+        /* HERO SECTION */
+
+        .hero {
+            min-height: 600px;
+            padding: 85px 8%;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 50px;
+            background:
+                radial-gradient(
+                    circle at 80% 35%,
+                    rgba(30, 94, 151, 0.25),
+                    transparent 40%
+                ),
+                linear-gradient(180deg, #0b1425, #080d19);
+        }
+
+        .tag {
+            color: #65e4db;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 5vw, 65px);
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+        }
+
+        .hero h1 span {
+            display: block;
+            color: #65e4db;
+        }
+
+        .hero-description {
+            color: #a3afc4;
+            font-size: 15px;
+            margin: 25px 0 30px;
+            max-width: 550px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-size: 13px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(110deg, #69c6ff, #70e2d7);
+            color: #07111d;
+        }
+
+        .btn-secondary {
+            border: 1px solid #344259;
+            color: #f3f6fc;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #263247;
+        }
+
+        .hero-stats h3 {
+            font-size: 12px;
+        }
+
+        .hero-stats p {
+            font-size: 10px;
+            color: #8998ae;
+        }
+
+        /* CODE ILLUSTRATION */
+
+        .hero-visual {
+            position: relative;
+            padding: 25px 0;
+        }
+
+        .security-card {
+            background: #0e192b;
+            border: 1px solid #34516c;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 15px;
+            background: #111e32;
+            border-bottom: 1px solid #263247;
+        }
+
+        .dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+        }
+
+        .red {
+            background: #ff8f7a;
+        }
+
+        .yellow {
+            background: #ffcf72;
+        }
+
+        .green {
+            background: #69d6b1;
+        }
+
+        .card-header small {
+            margin-left: auto;
+            color: #8d9cb0;
+        }
+
+        .code-content {
+            padding: 25px 18px;
+            font-family: monospace;
+            font-size: 12px;
+            line-height: 2.8;
+            overflow-x: auto;
+        }
+
+        .code-content p {
+            white-space: nowrap;
+            color: #77c9ff;
+        }
+
+        .code-content .line-number {
+            color: #5a6b83;
+            margin-right: 12px;
+        }
+
+        .code-content .success {
+            color: #77dcb9;
+        }
+
+        .security-status {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            background: #0c1728;
+            border-top: 1px solid #263247;
+        }
+
+        .check {
+            width: 30px;
+            height: 30px;
+            display: grid;
+            place-items: center;
+            background: #123e3d;
+            color: #65e4db;
+            border-radius: 7px;
+        }
+
+        .security-status strong {
+            font-size: 11px;
+        }
+
+        .security-status p {
+            font-size: 10px;
+            color: #8395ad;
+        }
+
+        .floating-card {
+            position: absolute;
+            padding: 10px 14px;
+            background: #142136;
+            border: 1px solid #344259;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .floating-top {
+            top: 0;
+            right: -15px;
+        }
+
+        .floating-bottom {
+            bottom: 0;
+            left: -15px;
+        }
+
+        /* HIGHLIGHTS */
+
+        .highlights {
+            padding: 25px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            background: #0b1220;
+            border-top: 1px solid #263247;
+            border-bottom: 1px solid #263247;
+        }
+
+        .highlights span {
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #a3afc4;
+        }
+
+        .highlights .star {
+            color: #65e4db;
+        }
+
+        /* ABOUT */
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: start;
+            gap: 65px;
+        }
+
+        .about-content {
+            padding-top: 15px;
+        }
+
+        .about-content p {
+            color: #a3afc4;
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        /* COURSE TOPICS */
+
+        .courses {
+            background: #0b1220;
+            border-top: 1px solid #263247;
+            border-bottom: 1px solid #263247;
+        }
+
+        .section-subtitle {
+            max-width: 550px;
+            color: #a3afc4;
+            font-size: 14px;
+            margin-top: 15px;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-top: 40px;
+        }
+
+        .course-card {
+            padding: 25px;
+            min-height: 260px;
+            background: linear-gradient(145deg, #111d30, #0d1626);
+            border: 1px solid #263247;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            border-color: #65e4db;
+        }
+
+        .course-icon {
+            width: 45px;
+            height: 45px;
+            display: grid;
+            place-items: center;
+            border-radius: 10px;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .icon-blue {
+            color: #72c8ff;
+            background: #142f4a;
+        }
+
+        .icon-purple {
+            color: #b9a3ff;
+            background: #282343;
+        }
+
+        .icon-green {
+            color: #78dfb8;
+            background: #153631;
+        }
+
+        .icon-orange {
+            color: #ffbd79;
+            background: #3b2a1c;
+        }
+
+        .icon-pink {
+            color: #ff9cd1;
+            background: #3b2034;
+        }
+
+        .icon-white {
+            color: #0d554d;
+            background: #e2fbf5;
+        }
+
+        .course-number {
+            font-size: 10px;
+            color: #8193ab;
+            font-weight: bold;
+            letter-spacing: 1.3px;
+            margin-bottom: 8px;
+        }
+
+        .course-card h3 {
+            font-size: 19px;
+            margin-bottom: 12px;
+        }
+
+        .course-card > p:last-child {
+            font-size: 12px;
+            color: #a3afc4;
+            line-height: 1.8;
+        }
+
+        .course-card.featured {
+            background: linear-gradient(145deg, #12333a, #0c1c2b);
+            border-color: #2d5d62;
+        }
+
+        /* LEARNING PATH */
+
+        .journey {
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 80px;
+        }
+
+        .journey-intro > p:last-child {
+            color: #a3afc4;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        .timeline {
+            border-left: 1px solid #2c455d;
+            padding-left: 30px;
+            margin-left: 12px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 35px;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-number {
+            position: absolute;
+            left: -47px;
+            top: 0;
+            width: 34px;
+            height: 34px;
+            display: grid;
+            place-items: center;
+            border: 1px solid #31546b;
+            border-radius: 50%;
+            background: #0b1727;
+            color: #65e4db;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .timeline-label {
+            color: #70b8d3;
+            font-size: 10px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+        }
+
+        .timeline-item h3 {
+            font-size: 18px;
+            margin: 7px 0;
+        }
+
+        .timeline-item p:last-child {
+            color: #a3afc4;
+            font-size: 12px;
+        }
+
+        /* ETHICS */
+
+        .ethics {
+            padding: 50px 8%;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            background: linear-gradient(110deg, #11353d, #10263b);
+            border-top: 1px solid #2c5a61;
+            border-bottom: 1px solid #2c5a61;
+        }
+
+        .ethics-icon {
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+            display: grid;
+            place-items: center;
+            border: 1px solid #5baca9;
+            border-radius: 14px;
+            font-size: 28px;
+        }
+
+        .ethics-content h2 {
+            font-size: 28px;
+        }
+
+        .ethics-content p:last-child {
+            margin-top: 10px;
+            color: #bdd0d8;
+            font-size: 13px;
+        }
+
+        /* CERTIFICATE */
+
+        .certificate {
+            display: grid;
+            grid-template-columns: 1fr 0.9fr;
+            align-items: center;
+            gap: 70px;
+        }
+
+        .certificate-info > p:not(.section-label) {
+            margin-top: 20px;
+            color: #a3afc4;
+            font-size: 14px;
+        }
+
+        .certificate-info .disclaimer {
+            font-size: 11px !important;
+            color: #77879c !important;
+        }
+
+        .certificate-card {
+            padding: 28px;
+            background: linear-gradient(145deg, #111f33, #0d1727);
+            border: 1px solid #263247;
+            border-radius: 14px;
+        }
+
+        .certificate-card-heading {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #263247;
+        }
+
+        .certificate-logo {
+            width: 45px;
+            height: 45px;
+            display: grid;
+            place-items: center;
+            border: 1px solid #4caaa7;
+            border-radius: 50%;
+            color: #65e4db;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .certificate-card-heading h3 {
+            font-size: 16px;
+        }
+
+        .certificate-card-heading p {
+            color: #8d9cb0;
+            font-size: 11px;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #263247;
+            font-size: 11px;
+        }
+
+        .detail-row span {
+            color: #8d9cb0;
+        }
+
+        .detail-row strong {
+            text-align: right;
+            max-width: 60%;
+            font-size: 11px;
+        }
+
+        .certificate-footer {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        .certificate-footer .check {
+            width: 42px;
+            height: 42px;
+            font-size: 20px;
+        }
+
+        .certificate-footer strong {
+            font-size: 12px;
+        }
+
+        .certificate-footer p {
+            font-size: 10px;
+            color: #8d9cb0;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 30px 8% 18px;
+            background: #070b14;
+            border-top: 1px solid #263247;
+        }
+
+        .footer-main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding-bottom: 25px;
+        }
+
+        .footer-main p {
+            color: #8492a7;
+            font-size: 12px;
+        }
+
+        .back-to-top {
+            color: #65e4db;
+            font-size: 12px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding-top: 16px;
+            border-top: 1px solid #263247;
+            color: #6f7e92;
+            font-size: 10px;
+        }
+
+        /* RESPONSIVE DESIGN */
+
+        @media (max-width: 1000px) {
+            .navbar {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 11px;
+            }
+
+            .hero {
+                padding-left: 5%;
+                padding-right: 5%;
+                gap: 25px;
+            }
+
+            .hero-stats {
+                gap: 15px;
+            }
+
+            .section {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .course-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .journey,
+            .certificate,
+            .about {
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-top: 15px;
+                padding-bottom: 15px;
+            }
+
+            .nav-links {
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 12px 18px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 60px;
+                padding-bottom: 60px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero-visual {
+                margin-top: 25px;
+            }
+
+            .hero-stats {
+                justify-content: space-between;
+            }
+
+            .highlights {
+                justify-content: center;
+            }
+
+            .highlights .star {
+                display: none;
+            }
+
+            .highlights span {
+                margin: 5px 8px;
+            }
+
+            .about,
+            .journey,
+            .certificate {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .course-card {
+                min-height: auto;
+            }
+
+            .ethics {
+                align-items: flex-start;
+                flex-wrap: wrap;
+            }
+
+            .ethics-content {
+                flex: 1;
+                min-width: 200px;
+            }
+
+            .ethics-content h2 {
+                font-size: 24px;
+            }
+
+            .footer-main {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 35px;
+            }
+
+            .hero-stats {
+                gap: 10px;
+            }
+
+            .hero-stats h3 {
+                font-size: 10px;
+            }
+
+            .hero-stats p {
+                font-size: 9px;
+            }
+
+            .floating-top {
+                right: -5px;
+            }
+
+            .floating-bottom {
+                left: -5px;
+            }
+
+            .detail-row {
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header>
+        <nav class="navbar">
+
+            <a href="#home" class="logo">
+                <span class="logo-icon">EH</span>Cyber<span>Learn</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#journey">Learning Path</a></li>
+                <li><a href="#certificate">Certificate</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+
+    <!-- HOME -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <p class="tag">10-WEEK VIRTUAL INTERNSHIP</p>
+
+            <h1>
+                Learn the Art of
+                <span>Ethical Hacking</span>
+            </h1>
+
+            <p class="hero-description">
+                Explore cybersecurity, understand vulnerabilities,
+                and develop responsible security skills through
+                the fundamentals of ethical hacking.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#courses" class="btn btn-primary">
+                    Explore Course →
+                </a>
+
+                <a href="#about" class="btn btn-secondary">
+                    Learn More
+                </a>
+            </div>
+
+            <div class="hero-stats">
+
+                <div>
+                    <h3>10 Weeks</h3>
+                    <p>Internship Duration</p>
+                </div>
+
+                <div>
+                    <h3>Cybersecurity</h3>
+                    <p>Learning Domain</p>
+                </div>
+
+                <div>
+                    <h3>Ethics First</h3>
+                    <p>Responsible Practice</p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- DECORATIVE CYBERSECURITY CARD -->
+        <div class="hero-visual">
+
+            <div class="security-card">
+
+                <div class="card-header">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                    <small>security_lab.txt</small>
+                </div>
+
+                <div class="code-content">
+
+                    <p><span class="line-number">01</span>const mission = "protect";</p>
+
+                    <p><span class="line-number">02</span>if (permission) {</p>
+
+                    <p><span class="line-number">03</span>&nbsp;&nbsp; testSafely();</p>
+
+                    <p><span class="line-number">04</span>&nbsp;&nbsp; improveSecurity();</p>
+
+                    <p><span class="line-number">05</span>}</p>
+
+                    <p class="success">// Ethics always come first</p>
+
+                </div>
+
+                <div class="security-status">
+                    <span class="check">✓</span>
+
+                    <div>
+                        <strong>Security Learning Mode</strong>
+                        <p>Authorized environments only</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="floating-card floating-top">
+                🛡️ Cybersecurity
+            </div>
+
+            <div class="floating-card floating-bottom">
+                🔐 Learn Responsibly
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- HIGHLIGHTS -->
+    <section class="highlights">
+
+        <span>CYBERSECURITY</span>
+        <span class="star">✦</span>
+
+        <span>NETWORK SECURITY</span>
+        <span class="star">✦</span>
+
+        <span>ETHICAL HACKING</span>
+        <span class="star">✦</span>
+
+        <span>CAREER DEVELOPMENT</span>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section class="section about" id="about">
+
+        <div>
+            <p class="section-label">01 / ABOUT THE INTERNSHIP</p>
+
+            <h2>
+                Security Starts With
+                <span class="accent">Curiosity.</span>
+            </h2>
+        </div>
+
+        <div class="about-content">
+
+            <p>
+                Ethical hacking is the practice of identifying and
+                understanding security weaknesses in computer systems
+                with proper authorization.
+            </p>
+
+            <p>
+                Its primary goal is to help organizations protect
+                their systems, networks, and data from potential
+                security threats.
+            </p>
+
+            <p>
+                This internship website introduces cybersecurity
+                fundamentals, vulnerability assessment concepts,
+                safe laboratory practice, and responsible security
+                testing.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- COURSE TOPICS -->
+    <section class="section courses" id="courses">
+
+        <p class="section-label">02 / COURSE HIGHLIGHTS</p>
+
+        <h2>
+            What You Will
+            <span class="accent">Learn.</span>
+        </h2>
+
+        <p class="section-subtitle">
+            Explore essential concepts behind ethical hacking
+            and responsible cybersecurity practice.
+        </p>
+
+
+        <div class="course-grid">
+
+            <div class="course-card">
+
+                <div class="course-icon icon-blue">⌘</div>
+
+                <p class="course-number">MODULE 01</p>
+
+                <h3>Cybersecurity Basics</h3>
+
+                <p>
+                    Understand security fundamentals, common threats,
+                    information security, and the importance of
+                    protecting digital assets.
+                </p>
+
+            </div>
+
+
+            <div class="course-card">
+
+                <div class="course-icon icon-purple">◎</div>
+
+                <p class="course-number">MODULE 02</p>
+
+                <h3>Networking Fundamentals</h3>
+
+                <p>
+                    Learn about IP addresses, network protocols,
+                    servers, and how computers communicate with
+                    each other.
+                </p>
+
+            </div>
+
+
+            <div class="course-card">
+
+                <div class="course-icon icon-green">⌕</div>
+
+                <p class="course-number">MODULE 03</p>
+
+                <h3>Vulnerability Assessment</h3>
+
+                <p>
+                    Understand security weaknesses, risk assessment,
+                    and how vulnerabilities can be documented
+                    and addressed.
+                </p>
+
+            </div>
+
+
+            <div class="course-card">
+
+                <div class="course-icon icon-orange">▣</div>
+
+                <p class="course-number">MODULE 04</p>
+
+                <h3>Security Testing</h3>
+
+                <p>
+                    Explore authorized security testing principles
+                    and practice cybersecurity concepts in safe,
+                    controlled learning environments.
+                </p>
+
+            </div>
+
+
+            <div class="course-card">
+
+                <div class="course-icon icon-pink">✎</div>
+
+                <p class="course-number">MODULE 05</p>
+
+                <h3>Security Reporting</h3>
+
+                <p>
+                    Learn to document findings, explain risks,
+                    and communicate practical recommendations
+                    for improving security.
+                </p>
+
+            </div>
+
+
+            <div class="course-card featured">
+
+                <div class="course-icon icon-white">✳</div>
+
+                <p class="course-number">MODULE 06</p>
+
+                <h3>Ethics and Responsibility</h3>
+
+                <p>
+                    Understand authorization, privacy, responsible
+                    disclosure, and the professional responsibilities
+                    of an ethical hacker.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LEARNING PATH -->
+    <section class="section journey" id="journey">
+
+        <div class="journey-intro">
+
+            <p class="section-label">03 / LEARNING PATH</p>
+
+            <h2>
+                Your Journey Into
+                <span class="accent">Cybersecurity.</span>
+            </h2>
+
+            <p>
+                Follow a structured learning path to develop
+                your knowledge, practice safely, and improve
+                your cybersecurity skills.
+            </p>
+
+        </div>
+
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+
+                <div class="timeline-number">01</div>
+
+                <p class="timeline-label">STEP ONE</p>
+
+                <h3>Build Your Foundation</h3>
+
+                <p>
+                    Learn networking fundamentals, computer systems,
+                    operating-system concepts, and basic cybersecurity
+                    terminology.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-number">02</div>
+
+                <p class="timeline-label">STEP TWO</p>
+
+                <h3>Explore Security Concepts</h3>
+
+                <p>
+                    Understand threats, vulnerabilities,
+                    reconnaissance concepts, and the importance
+                    of authorized testing.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-number">03</div>
+
+                <p class="timeline-label">STEP THREE</p>
+
+                <h3>Practice Safely</h3>
+
+                <p>
+                    Apply concepts using approved training labs
+                    and learn how security weaknesses can be
+                    understood and mitigated.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-number">04</div>
+
+                <p class="timeline-label">STEP FOUR</p>
+
+                <h3>Document Your Findings</h3>
+
+                <p>
+                    Prepare reports, explain potential impacts,
+                    recommend solutions, and reflect on
+                    professional responsibilities.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ETHICAL HACKING GUIDELINES -->
+    <section class="ethics">
+
+        <div class="ethics-icon">🛡️</div>
+
+        <div class="ethics-content">
+
+            <p class="section-label">THE GOLDEN RULE</p>
+
+            <h2>Permission Is Not Optional.</h2>
+
+            <p>
+                Always obtain explicit authorization before testing
+                a system. Practice only in approved environments,
+                respect privacy, and follow the law.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- CERTIFICATE DETAILS -->
+    <section class="section certificate" id="certificate">
+
+        <div class="certificate-info">
+
+            <p class="section-label">04 / INTERNSHIP DETAILS</p>
+
+            <h2>
+                Learn With Purpose.
+                <span class="accent">Grow With Practice.</span>
+            </h2>
+
+            <p>
+                The provided certificate describes a 10-week
+                Ethical Hacking Virtual Internship conducted
+                during July to September 2026, in English,
+                with support from EduSkills Academy.
+            </p>
+
+            <p class="disclaimer">
+                This is an independently created student website.
+                It is not an official AICTE, EduSkills, or
+                National Internship Portal website.
+            </p>
+
+        </div>
+
+
+        <div class="certificate-card">
+
+            <div class="certificate-card-heading">
+
+                <div class="certificate-logo">EH</div>
+
+                <div>
+                    <h3>Internship Overview</h3>
+                    <p>Program Information</p>
+                </div>
+
+            </div>
+
+
+            <div class="detail-row">
+                <span>Program</span>
+                <strong>Ethical Hacking Virtual Internship</strong>
+            </div>
+
+            <div class="detail-row">
+                <span>Duration</span>
+                <strong>10 Weeks</strong>
+            </div>
+
+            <div class="detail-row">
+                <span>Period</span>
+                <strong>July – September 2026</strong>
+            </div>
+
+            <div class="detail-row">
+                <span>Language</span>
+                <strong>English</strong>
+            </div>
+
+            <div class="detail-row">
+                <span>Domain</span>
+                <strong>Cybersecurity</strong>
+            </div>
+
+
+            <div class="certificate-footer">
+
+                <span class="check">✓</span>
+
+                <div>
+                    <strong>Learn. Test. Protect.</strong>
+                    <p>Build responsible security habits.</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-main">
+
+            <a href="#home" class="logo">
+                <span class="logo-icon">EH</span>Cyber<span>Learn</span>
+            </a>
+
+            <p>
+                Ethical Hacking Virtual Internship<br>
+                A Student Learning Project
+            </p>
+
+            <a href="#home" class="back-to-top">
+                Back to Top ↑
+            </a>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>© 2026 CyberLearn Student Project</p>
+
+            <p>Built with HTML and CSS</p>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
